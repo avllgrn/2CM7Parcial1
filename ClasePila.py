@@ -6,7 +6,7 @@ class Pila:
         self.tope = None
 
     def __del__(self):
-        self.eliminaPila()
+        self.liberaMemoria()
 
     def push(self, dato):
         self.tope = Nodo(dato, self.tope)
@@ -21,7 +21,7 @@ class Pila:
     def estaVacia(self):
         return self.tope==None
 
-    def eliminaPila(self):
+    def liberaMemoria(self):
         while not self.estaVacia():
             print(f'Se elimina {self.pop()}')
 
