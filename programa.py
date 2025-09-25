@@ -2,24 +2,31 @@ from random import randrange
 from os import system
 from ClaseLSE import LSE
 
-def esPrimo(n):
-    if n==0 or n==1:
-        return False
-
-    for i in range(2,n):
-        if n%i==0:
-            return False
-
-    return True
-
-def cuentaPrimosEn(L):
-    pares = 0
+def cuentaNodosEn(L):
+    nodos = 0
     aux = L.primero
     while aux!=None:
-        if esPrimo(aux.dato) != 0:
-            pares += 1
+        nodos += 1
         aux=aux.siguiente
-    return pares
+    return nodos
+
+def sumaNodosEn(L):
+    suma = 0
+    aux = L.primero
+    while aux!=None:
+        suma += aux.dato
+        aux=aux.siguiente
+    return suma
+
+def cuentaMayoresAPromedioEn(L):
+    promedio = sumaNodosEn(L) / cuentaNodosEn(L)
+    nodos = 0
+    aux = L.primero
+    while aux!=None:
+        if aux.dato>promedio:
+            nodos += 1
+        aux=aux.siguiente
+    return nodos
 
 if __name__ == '__main__':
     system('cls')
@@ -29,8 +36,14 @@ if __name__ == '__main__':
     n = randrange(10)
 
     for i in range(n):
-        L.insertaAlUltimo(randrange(10))
+        L.insertaAlUltimo(randrange(100))
 
     print(f'L {L}')
+    print('\n\n\n')
 
-    print(f'Hay {cuentaPrimosEn(L)} primo(s).')
+    print(f'Hay {cuentaNodosEn(L)}.')
+    print(f'Suman {sumaNodosEn(L)}.')
+    if n>0:
+        print(f'El promedio es { sumaNodosEn(L) / cuentaNodosEn(L)}.')
+        print(f'Hay {cuentaMayoresAPromedioEn(L)} mayores que el promedio.')
+    print('\n\n\n')
