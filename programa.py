@@ -2,6 +2,14 @@ from random import randrange
 from os import system
 from ClaseLSE import LSE
 
+def cuentaNodosEn(L):
+    nodos = 0
+    aux = L.primero
+    while aux!=None:
+        nodos += 1
+        aux=aux.siguiente
+    return nodos
+
 def sumaNodosEn(L):
     suma = 0
     aux = L.primero
@@ -18,8 +26,10 @@ if __name__ == '__main__':
     n = randrange(10)
 
     for i in range(n):
-        L.insertaAlUltimo(randrange(10))
+        L.insertaAlUltimo(randrange(100))
 
     print(f'L {L}')
 
+    print(f'Hay {cuentaNodosEn(L)}.')
     print(f'Suman {sumaNodosEn(L)}.')
+    print(f'El promedio es { sumaNodosEn(L) / cuentaNodosEn(L)}.')
