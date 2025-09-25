@@ -2,31 +2,24 @@ from random import randrange
 from os import system
 from ClaseLSE import LSE
 
-def cuentaNodosEn(L):
-    nodos = 0
-    aux = L.primero
-    while aux!=None:
-        nodos += 1
-        aux=aux.siguiente
-    return nodos
+def muestraInvertida(L):
+    aux1=L.primero
+    aux2=L.ultimo
+    
+    while aux1!=aux2:
+        print(f'| {aux2.dato} |', end='')
+        if(aux2!=L.primero):
+            print(' <- ', end='')
 
-def sumaNodosEn(L):
-    suma = 0
-    aux = L.primero
-    while aux!=None:
-        suma += aux.dato
-        aux=aux.siguiente
-    return suma
+        while aux1.siguiente!=aux2:
+            aux1=aux1.siguiente
 
-def cuentaMenoresAPromedioEn(L):
-    promedio = sumaNodosEn(L) / cuentaNodosEn(L)
-    nodos = 0
-    aux = L.primero
-    while aux!=None:
-        if aux.dato<promedio:
-            nodos += 1
-        aux=aux.siguiente
-    return nodos
+        aux2=aux1
+        aux1=L.primero
+
+    if not L.estaVacia() and aux1==aux2:
+        print(f'| {aux2.dato} |', end='')
+
 
 if __name__ == '__main__':
     system('cls')
@@ -40,10 +33,5 @@ if __name__ == '__main__':
 
     print(f'L {L}')
     print('\n\n\n')
-
-    print(f'Hay {cuentaNodosEn(L)}.')
-    print(f'Suman {sumaNodosEn(L)}.')
-    if n>0:
-        print(f'El promedio es { sumaNodosEn(L) / cuentaNodosEn(L)}.')
-        print(f'Hay {cuentaMenoresAPromedioEn(L)} menores que el promedio.')
+    muestraInvertida(L)
     print('\n\n\n')
