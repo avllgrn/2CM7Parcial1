@@ -18,12 +18,12 @@ def sumaNodosEn(L):
         aux=aux.siguiente
     return suma
 
-def cuentaMayoresAPromedioEn(L):
+def cuentaMenoresAPromedioEn(L):
     promedio = sumaNodosEn(L) / cuentaNodosEn(L)
     nodos = 0
     aux = L.primero
     while aux!=None:
-        if aux.dato>promedio:
+        if aux.dato<promedio:
             nodos += 1
         aux=aux.siguiente
     return nodos
@@ -45,5 +45,5 @@ if __name__ == '__main__':
     print(f'Suman {sumaNodosEn(L)}.')
     if n>0:
         print(f'El promedio es { sumaNodosEn(L) / cuentaNodosEn(L)}.')
-        print(f'Hay {cuentaMayoresAPromedioEn(L)} mayores que el promedio.')
+        print(f'Hay {cuentaMenoresAPromedioEn(L)} menores que el promedio.')
     print('\n\n\n')
