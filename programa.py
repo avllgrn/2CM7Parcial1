@@ -2,12 +2,15 @@ from random import randrange
 from os import system
 from ClaseLSE import LSE
 
-def esCapicua(numero):
+def esPalindromo(cadena):
     L = LSE()
-    for caracter in numero:
-        L.insertaAlPrimero(caracter)
+    cadenaAux = ''
+    for caracter in cadena:
+        if caracter.isalpha():
+            cadenaAux+=caracter.upper()
+            L.insertaAlPrimero(caracter.upper())
 
-    for caracter in numero:
+    for caracter in cadenaAux:
         if caracter!=L.eliminaAlPrimero():
             return False
     return True
@@ -15,10 +18,10 @@ def esCapicua(numero):
 if __name__ == '__main__':
     system('cls')
 
-    numero = input('Ingresa tu numero ')
-    if esCapicua(numero):
-        print(f'{numero} ES capicúa')
+    cadena = input('Ingresa tu cadena ')
+    if esPalindromo(cadena):
+        print(f'{cadena} ES palíndromo')
     else:
-        print(f'{numero} NO es capicúa')
+        print(f'{cadena} NO es palíndromo')
 
     print('\n\n\n')
