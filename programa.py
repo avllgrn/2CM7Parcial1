@@ -2,26 +2,24 @@ from random import randrange
 from os import system
 from ClaseLSE import LSE
 
-def esPalindromo(cadena):
+def decimalAbinairo(decimal):
     L = LSE()
-    cadenaAux = ''
-    for caracter in cadena:
-        if caracter.isalpha():
-            cadenaAux+=caracter.upper()
-            L.insertaAlPrimero(caracter.upper())
+    while decimal!=0:
+        L.insertaAlPrimero(decimal%2)
+        decimal //= 2
 
-    for caracter in cadenaAux:
-        if caracter!=L.eliminaAlPrimero():
-            return False
-    return True
+    binario = ''
+    while not L.estaVacia():
+        binario += str(L.eliminaAlPrimero())
+
+    return binario
 
 if __name__ == '__main__':
     system('cls')
 
-    cadena = input('Ingresa tu cadena ')
-    if esPalindromo(cadena):
-        print(f'{cadena} ES palíndromo')
-    else:
-        print(f'{cadena} NO es palíndromo')
+    numero = int(input('Ingresa tu número '))
+    binario = decimalAbinairo(numero)
+
+    print(f'( {numero} )10 = ( {binario} )2')
 
     print('\n\n\n')
