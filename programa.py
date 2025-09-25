@@ -2,21 +2,14 @@ from random import randrange
 from os import system
 from ClaseLSE import LSE
 
-def cuentaNodosEn(L):
-    nodos = 0
+def cuentaParesEn(L):
+    pares = 0
     aux = L.primero
     while aux!=None:
-        nodos += 1
+        if aux.dato%2 == 0:
+            pares += 1
         aux=aux.siguiente
-    return nodos
-
-def sumaNodosEn(L):
-    suma = 0
-    aux = L.primero
-    while aux!=None:
-        suma += aux.dato
-        aux=aux.siguiente
-    return suma
+    return pares
 
 if __name__ == '__main__':
     system('cls')
@@ -30,6 +23,4 @@ if __name__ == '__main__':
 
     print(f'L {L}')
 
-    print(f'Hay {cuentaNodosEn(L)}.')
-    print(f'Suman {sumaNodosEn(L)}.')
-    print(f'El promedio es { sumaNodosEn(L) / cuentaNodosEn(L)}.')
+    print(f'Hay {cuentaParesEn(L)} par(es).')
