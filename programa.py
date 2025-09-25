@@ -2,13 +2,13 @@ from random import randrange
 from os import system
 from ClaseLSE import LSE
 
-def cuentaNodosEn(L):
-    nodos = 0
+def sumaNodosEn(L):
+    suma = 0
     aux = L.primero
     while aux!=None:
-        nodos += 1
+        suma += aux.dato
         aux=aux.siguiente
-    return nodos
+    return suma
 
 if __name__ == '__main__':
     system('cls')
@@ -18,8 +18,8 @@ if __name__ == '__main__':
     n = randrange(10)
 
     for i in range(n):
-        L.insertaAlUltimo(randrange(100))
+        L.insertaAlUltimo(randrange(10))
 
     print(f'L {L}')
 
-    print(f'Hay {cuentaNodosEn(L)} nodos.')
+    print(f'Suman {sumaNodosEn(L)}.')
